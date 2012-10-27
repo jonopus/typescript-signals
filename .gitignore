@@ -161,3 +161,7 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+typescript-signals.sublime-project
+typescript-signals.sublime-workspace
+build/user.properties
