@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project
+	name="build"
+	basedir="."
+	default="build.all"
+>
+
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- ///////////////////////////////////// PROPERTIES ////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<!--
+		The file contains a single property named typescript.compiler.path which can contain
+	 	user name of system login which you may don't want to publish on the web.
+
+	 	Instructions given in the user.properties.sample file included in the project.
+	 -->
+	<property file="build/user.properties" />
+
+	<!--
+		Standard project properties, including name of the release file to build.
+	 -->
+	<property file="build/build.properties" />
+
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- //////////////////////////////////////// MACRO //////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<!--
+		Recursively read a source directory for TypeScript files, generate a compile list in the
+		format needed by the TypeScript compiler adding every parameters it take.
+	-->
+	<macrodef name="TypeScriptCompileDir">
+
+		<!-- required attribute -->
+		<attribute name="src" />
+
+		<!-- optional attributes -->
+		<attribute name="out" default="" />
+		<attribute name="module" default="" />
+		<attribute name="comments" default="" />
+		<attribute name="declarations" default="" />
+		<attribute name="nolib" default="" />
+		<attribute name="target" default="" />
+
+		<sequential>
+
+			<!-- local properties -->
+			<local name="out.arg"/>
+			<local name="module.arg"/>
+			<local name="comments.arg"/>
+			<local name="declarations.arg"/>
+			<local name="nolib.arg"/>
+			<local name="target.arg"/>
+			<local name="typescript.file.list"/>
+			<local name="tsc.compile.file"/>
+
+			<property name="tsc.compile.file" value="@{src}compile.list" />
+
+			<!-- Optional arguments are not written to compile file when attributes not set -->
+			<condition property="out.arg" value="" else='--out "@{out}"'>
+				<equals arg1="@{out}" arg2="" />
+			</condition>
+
+			<condition property="module.arg" value="" else="--module @{module}">
+				<equals arg1="@{module}" arg2="" />
+			</condition>
+
+			<condition property="comments.arg" value="" else="--comments">
+				<equals arg1="@{comments}" arg2="" />
+			</condition>
+
+			<condition property="declarations.arg" value="" else="--declarations">
+				<equals arg1="@{declarations}" arg2="" />
+			</condition>
+
+			<condition property="nolib.arg" value="" else="--nolib">
+				<equals arg1="@{nolib}" arg2="" />
+			</condition>
+
+			<!-- Could have been defaulted to ES3 but let the compiler uses its own default is quite better -->
+			<condition property="target.arg" value="" else="--target">
+				<equals arg1="@{target}" arg2="" />
+			</condition>
+
+			<!-- Recursively read TypeScript source directory and generate a compile list -->
+			<pathconvert property="typescript.file.list" dirsep="\" pathsep="${line.separator}">
+
+				<fileset dir="@{src}">
+					<include name="**/*.ts" />
+				</fileset>
+
+				<!-- In case regexp doesn't work on your computer, comment <mapper /> and uncomment <regexpmapper /> -->
+				<mapper type="regexp" from="^(.*)$" to='"\1"' />
+				<!--regexpmapper from="^(.*)$" to='"\1"' /-->
+
+			</pathconvert>
+
+
+			<!-- Write to the file -->
+			<echo message="Writing tsc command line arguments to : ${tsc.compile.file}" />
+			<echo file="${tsc.compile.file}" message="${typescript.file.list}${line.separator}${out.arg}${line.separator}${module.arg}${line.separator}${comments.arg}${line.separator}${declarations.arg}${line.separator}${nolib.arg}${line.separator}${target.arg}" append="false" />
+
+			<!-- Compile using the generated compile file -->
+			<echo message="Calling ${typescript.compiler.path} with ${tsc.compile.file}" />
+			<exec dir="@{src}" executable="${typescript.compiler.path}">
+				<arg value="@${tsc.compile.file}"/>
+			</exec>
+
+			<!-- Finally delete the compile file -->
+			<echo message="${tsc.compile.file} deleted" />
+			<delete file="${tsc.compile.file}" />
+
+		</sequential>
+
+	</macrodef>
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- /////////////////////////////////////// COMPILE /////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<target name="compile.src" description="Concatenate and minifiy a set of files">
+
+		<!--
+			Because the TypeScript compiler doesn't know how to output a specific file to a specific
+			path. We let it output JavaScript compiled files beside TypeScript files. As the
+			TypeScript files must be removed at the end of the operation, it's better to work on a
+			copy of the source files for obvious reasons. The generated directory will also be used
+			to debug plain JavaScript files stored in their respective class path.
+
+			Ant can fix the problem using <apply /> and <redirector /> but it is way too slow
+			because it process each file independently in a tsc call for each file.
+		-->
+		<copy todir="${src-js.dir}" overwrite="true">
+			<fileset dir="${src.dir}">
+				<include name="**/*.ts" />
+			</fileset>
+		</copy>
+
+		<!-- Compile a single JavaScript file in the bin dir for release -->
+		<TypeScriptCompileDir
+			src="${src-js.dir}"
+			out="${release-file-path}"
+			declarations="${release-declaration-file-path}"
+			module="amd"
+		/>
+
+		<!-- Compile plain JavaScript files in their respective directories for debug -->
+		<TypeScriptCompileDir
+			src="${src-js.dir}"
+			module="amd"
+		/>
+
+		<antcall target="clean.src-js" />
+
+	</target>
+
+	<target name="compile.test" description="Concatenate and minifiy a set of files">
+
+		<!--
+			Because the TypeScript compiler doesn't know how to output a specific file to a specific
+			path. We let it output JavaScript compiled files beside TypeScript files. As the
+			TypeScript files must be removed at the end of the operation, it's better to work on a
+			copy of the source files for obvious reasons. The generated directory will also be used
+			to debug plain JavaScript files stored in their respective class path.
+
+			Ant can fix the problem using <apply /> and <redirector /> but it is way too slow
+			because it process each file independently in a tsc call for each file.
+		-->
+		<copy todir="${test-src-js.dir}" overwrite="true">
+			<fileset dir="${test-src.dir}">
+				<include name="**/*.ts" />
+			</fileset>
+		</copy>
+
+		<!-- Compile plain JavaScript files in their respective directories for debug -->
+		<TypeScriptCompileDir
+			src="${test-src-js.dir}"
+			module="amd"
+		/>
+
+		<antcall target="clean.test-src-js" />
+
+	</target>
+
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- /////////////////////////////////////// MINIFY //////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<target name="compress" description="Minifiy the release JavaScript file">
+
+		<taskdef name="yuicompress" classname="com.yahoo.platform.yui.compressor.YUICompressTask">
+			<classpath>
+				<pathelement path="${yuicompressor.file}" />
+				<pathelement path="${yuiant.file}" />
+			</classpath>
+		</taskdef>
+
+		<yuicompress
+			charset="UTF-8"
+			linebreak="500"
+			warn="false"
+			munge="yes"
+			preserveallsemicolons="false"
+			preservestringlitterals="false"
+			outputfolder="${bin.dir}"
+			outputsuffix="-min"
+		>
+			<fileset dir="${bin.dir}">
+				<include name="*.js"/>
+			</fileset>
+		</yuicompress>
+
+	</target>
+
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- //////////////////////////////////////// CLEAN //////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<target
+		name="clean.all"
+		description="Clean bin directory"
+		depends=
+		"
+			clean.bin,
+			clean.test-src-js,
+			remove.src-js,
+			remove.test-src-js
+		"
+	/>
+
+	<target name="clean.bin" description="Clean bin directory">
+
+		<delete>
+			<fileset dir="${bin.dir}">
+				<include name="*.js" />
+				<include name="*.ts" />
+			</fileset>
+		</delete>
+
+	</target>
+
+	<target name="clean.src-js" description="Clean src-js output directory from its TypeScript files">
+
+		<delete>
+			<fileset dir="${src-js.dir}">
+				<include name="**/*.ts" />
+			</fileset>
+		</delete>
+
+	</target>
+
+	<target name="clean.test-src-js" description="Clean test src-js output directory from its TypeScript files ">
+
+		<delete>
+			<fileset dir="${test-src-js.dir}">
+				<include name="**/*.ts" />
+			</fileset>
+		</delete>
+
+	</target>
+
+	<target name="remove.src-js" description="Remove the src-js output directory from the project">
+
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${src-js.dir}" />
+		</delete>
+
+	</target>
+
+	<target name="remove.test-js" description="Remove the test-js output directory from the project">
+
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${test-src-js.dir}/" />
+		</delete>
+
+	</target>
+
+	<target name="remove.test-src-js" description="Remove the test-src-js output directory from the project">
+
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${test-src-js.dir}/" />
+		</delete>
+
+	</target>
+
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- //////////////////////////////////////// BUILD //////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<target
+		name="build.src"
+		description="Compile src from TypeScript to JavaScript, concatenate and minify it into a single file"
+		depends=
+		"
+			clean.bin,
+			remove.src-js,
+			compile.src,
+			compress
+		"
+	/>
+
+	<target
+		name="build.test"
+		description="Compile tests from TypeScript to JavaScript"
+		depends=
+		"
+			clean.bin,
+			remove.test-js,
+			compile.test
+		"
+	/>
+
+	<target
+		name="build.all"
+		description="Compile TypeScript to JavaScript, concatenate JavaScript and minify sets of JavaScript files"
+		depends=
+		"
+			build.src,
+			build.test
+		"
+	/>
+
+</project>

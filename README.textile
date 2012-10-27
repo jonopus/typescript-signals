@@ -1,0 +1,2 @@
+Typescript port of https://github.com/millermedeiros/js-signals
+Mainly to get a live declaration file generated.

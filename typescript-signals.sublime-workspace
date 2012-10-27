@@ -1,0 +1,404 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cons",
+				"console"
+			],
+			[
+				"con",
+				"constants"
+			],
+			[
+				"ts",
+				"tst"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/User/tsc.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 97.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/public/js/history.js",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/public/index.html",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/com/balupton/history.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/README.txt",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/com/opus/signals/signal.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/process/Process.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/control/IRunnable.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/control/IResumable.ts",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/time/Sequence.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/time/Timer.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/time/Interval.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/core/Destroyable.as",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/core/IDestroyable.as",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/build.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/compile.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/public/js/App.js",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/com/opus/app/constants/constants.ts",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/org/casalib/events/RemovableEventDispatcher.as",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/src/HttpServer.js",
+		"/C/Users/Jon Adams/Google Drive/TypeScriptTest/public/js/easeljs-0.5.0.min.js",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/com/opus/signals/signal.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/com/App.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/public/js/App.js",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/com/opus/app/App.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/build.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/compile.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/README.txt",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/public/index.html",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/constants.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/com/opus/app/constants/constants.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/public/js/App-min.js",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/App.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/local/HttpServer.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/com/opus/net/HttpServer.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/node.d.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/HttpServer.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/HttpServer.js",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/src/compileApp.js",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/App.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/public/css/style.css",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/compile.ts",
+		"/C/Users/jadams/Google Drive/TypeScriptTest/TypeScriptTest.sublime-project",
+		"/C/SVN/TypeScriptTest2/compileApp.ts",
+		"/C/SVN/TypeScriptTest2/public/js/App-min.js",
+		"/C/SVN/TypeScriptTest2/compile.ts",
+		"/C/SVN/TypeScriptTest2/Compile.ts",
+		"/C/SVN/TypeScriptTest2/App.ts",
+		"/C/SVN/TypeScriptTest2/public/js/App.js",
+		"/C/SVN/TypeScriptTest2/README.txt",
+		"/C/SVN/TypeScriptTest2/Compile.js",
+		"/C/SVN/TypeScriptTest2/args.tsc",
+		"/C/SVN/TypeScriptTest2/easeljs-0.5.0.min.js",
+		"/C/SVN/TypeScriptTest2/easeljs-0.5.0.min.ts",
+		"/C/SVN/TypeScriptTest2/public/index.html",
+		"/C/SVN/TypeScriptTest2/HttpServer.ts",
+		"/C/SVN/TypeScriptTest2/local/HttpServer.js",
+		"/C/SVN/TypeScriptTest2/src/HttpServer.ts",
+		"/C/SVN/TypeScriptTest2/src/Compile.ts",
+		"/C/SVN/TypeScriptTest2/src/Compile.js",
+		"/C/SVN/TypeScriptTest2/src/signal.ts",
+		"/C/SVN/TypeScriptTest2/constants.ts",
+		"/C/SVN/TypeScriptTest2/index.html",
+		"/C/SVN/TypeScriptTest2/HttpServer.js",
+		"/C/SVN/TypeScriptTest2/signal.ts",
+		"/C/SVN/TypeScriptTest2/App.js",
+		"/C/SVN/TypeScriptTest2/signal.js",
+		"/C/SVN/TypeScriptTest2/index.htm",
+		"/C/SVN/TypeScriptTest2/Main.js",
+		"/C/SVN/TypeScriptTest2/game.js",
+		"/C/SVN/TypeScriptTest2/Game.ts",
+		"/C/SVN/TypeScriptTest2/Features.ts",
+		"/C/SVN/TypeScriptTest2/Driver.ts",
+		"/C/SVN/TypeScriptTest2/Constants.ts",
+		"/C/SVN/TypeScriptTest2/Position.ts",
+		"/C/SVN/TypeScriptTest2/geometry.ts",
+		"/C/SVN/TypeScriptTest2/data.ts",
+		"/C/SVN/TypeScriptTest2/itemDetailPage.ts",
+		"/C/SVN/TypeScriptTest2/TypeScriptTest.ts",
+		"/C/SVN/TypeScriptTest2/casalib.d.ts",
+		"/C/SVN/TypeScriptTest/compile.ts",
+		"/C/SVN/TypeScriptTest/src/TypeScriptTest.ts",
+		"/C/SVN/TypeScriptTest/src/casalib.js",
+		"/C/SVN/TypeScriptTest/src/casalib.d.ts",
+		"/C/SVN/TypeScriptTest/src/casalib.ts",
+		"/C/SVN/TypeScriptTest/src/test.ts",
+		"/C/SVN/TypeScriptTest/src/jquery.d.ts",
+		"/C/SVN/TypeScriptTest/js/TypeScriptTest.js",
+		"/C/SVN/TypeScriptTest/src/com/tst/constants/ApplicationConstants.ts",
+		"/C/SVN/TypeScriptTest/src/com/tst/constants/TSTConstants.ts",
+		"/C/SVN/TypeScriptTest/js/TypeScriptTest.d.ts",
+		"/C/SVN/TypeScriptTest/index.html",
+		"/C/SVN/TypeScriptTest/TypeScriptTest.sublime-project",
+		"/C/SVN/TypeScriptTest/.sublime-build",
+		"/C/Users/jadams/AppData/Roaming/Sublime Text 2/Packages/User/tsc.sublime-build",
+		"/C/SVN/TypeScriptTest/bin/TypeScriptTest.js",
+		"/C/SVN/TypeScriptTest/compile.js",
+		"/C/Users/jadams/AppData/Roaming/Sublime Text 2/Packages/User/Plain text.sublime-settings",
+		"/C/SVN/TypeScriptTest/launch.bat"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"\\",
+			"Failed:",
+			"Observer",
+			"INotification",
+			"IMediator",
+			"IProxy",
+			"IMediator",
+			"INotification",
+			"IMediator",
+			"IProxy",
+			"INotifier",
+			"INotification",
+			"IMediator",
+			"IProxy",
+			"INotifier",
+			"src/",
+			"\\",
+			"visitorEngaged",
+			"}},",
+			"},",
+			"{\n	",
+			"{",
+			"Adapter",
+			"init",
+			"_delayComplete",
+			"_sequence",
+			"_current",
+			" == nu",
+			"Task",
+			"delayComplete",
+			"delayComplete ",
+			"addTask",
+			"add",
+			"remove",
+			"_bindings",
+			"context",
+			"_indexOfListener",
+			"listenerContext",
+			"context",
+			"_indexOfListener",
+			"_registerListener",
+			"listenerContext",
+			"_removeCurrentListener",
+			"'completeEventName",
+			"completeEventName",
+			"complete",
+			"resumed",
+			"_delayComplete",
+			"_isRunning",
+			"isrunn",
+			"running",
+			"_running",
+			"running",
+			"_delayComplete",
+			"_delayCom",
+			"looped",
+			"_createEvent",
+			"_startDelay",
+			"_hasDelayCompleted",
+			"_startDelay",
+			"_isRunning",
+			"completed",
+			"_delayComplete",
+			"org.casalib.time.Task",
+			"_sequence",
+			"Task",
+			"task",
+			"Task",
+			"_createEvent",
+			"IEventDispatcher",
+			"_sequence",
+			"function",
+			"Sequence",
+			"Process",
+			"signa",
+			"Interval",
+			"()=>any",
+			"arguments",
+			"start",
+			"Array",
+			"Function",
+			"array",
+			"arguments",
+			"_timerHandler",
+			"_listenerManager",
+			":void",
+			"_callBack",
+			"int",
+			"Number",
+			"ListenerManager",
+			"var ",
+			"function",
+			"protected",
+			"super.",
+			"_callBack",
+			"destroy",
+			"public function ",
+			"public static function ",
+			"Number",
+			"int",
+			"Boolean",
+			"Interval",
+			"Function",
+			"function ",
+			"override ",
+			" function",
+			"public ",
+			"var ",
+			"protected",
+			"IResumable",
+			"Process",
+			"int",
+			"IRunnable",
+			"uint",
+			"org",
+			":void",
+			"var ",
+			"protected",
+			"public function ",
+			"Boolean",
+			"sign",
+			"com",
+			"dispatch",
+			"_registerListener",
+			"add",
+			"node",
+			" : function "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"running",
+			"any",
+			"function",
+			"()=>any",
+			"",
+			"number",
+			"",
+			"private",
+			"",
+			"static ",
+			"number",
+			"bool",
+			"boolean",
+			"function",
+			"",
+			"private",
+			"number",
+			"",
+			"private",
+			"",
+			"bool",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 122.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"typ",
+				"src/TypeScriptTest.ts"
+			],
+			[
+				"pro",
+				"TypeScriptTest.sublime-project"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 460.0,
+	"status_bar_visible": true
+}
